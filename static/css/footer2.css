@@ -1,0 +1,17 @@
+.wrapper-contact {
+    margin-right: 2%;
+    float: right;
+}
+
+.contact-li {
+    display: inline-block !important;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 25px;
+    margin-bottom: 125px;
+    font-size: 21px;
+}
+.wrapper-pagination {
+    text-align: center;
+    margin-top: 120px;
+}

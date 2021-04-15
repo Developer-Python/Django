@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include "header.html" %}
+
+<div class="nav__bar">
+  <a href="#" class="nav__trigger">
+      <div class="bars"></div>
+  </a>        
+</div>
+
+<div style="height:100vh;" class="main">
+  <section style='max-width: 560px;' class="content">
+    <article class="article">
+
+
+    <form action='' method="POST">
+
+      {% csrf_token %}
+      <div class="login-wrapper">
+
+        <label class='login-label'>Имя пользователя:</label>
+        <input class='input-login' name="username" required='' minlength="3" maxlength="40">
+        <label class='login-label'>Пароль:</label>
+        <input class='input-login' type="password" name="password" required='' minlength="5" maxlength="32">
+        <br>
+        <button class='btn btn-login btn-outline-success' type="submit">Войти</button>
+
+        
+
+          {% if form.errors %}
+          <div class="error">
+
+            {% if field.errors == None %}
+              <p><span class="error-text">Ошибка:</span> Вы ввели неправильное имя пользователя или пароль!</p>
+            {% endif %}
+
+            {% for field in form %}
+              {% for error in field.errors %}
+                  <p><span class="error-text">{{field.label}}:</span> {{ error|escape }}</p>
+              {% endfor %}
+            {% endfor %}
+
+          </div>
+          {% endif %}
+
+      </div>
+      
+    </form>
+
+    </article>
+  </section>
+</div>
+
+{% include "footer.html" %}
+
+{% endblock content %}

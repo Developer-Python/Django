@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+
+{% include "header.html" %}
+
+
+<div class="nav__bar">
+    <a href="#" class="nav__trigger">
+        <div class="bars"></div>
+    </a>        
+</div>
+  
+<div style="height:100vh;" class="main">
+            <div class='container'>
+                <div style='margin-top: 40px' class='row'>
+
+                    <div class='col-md-3'>
+                        <img class="img" src="{{games.image_wrapper.url}}"/>
+                    </div>
+
+                    <div class='col-md-9'>
+
+                        <h3 class="detail__title">{{games.title}} ({{games.data}})</h3>
+
+                        <hr>
+
+                        <span class='text-1'> Язык интерфейса:      <span class='text-2'>{{games.language_text}}</span></span>
+                        <span class='text-1'> Язык озвучки:         <span class='text-2'>{{games.language_voise}}</span></span>
+                        <span class='text-1'> Операцеонная система: <span class='text-2'>{{games.os}}</span></span>
+                        <span class='text-1'> Процессор:            <span class='text-2'>{{games.cpu}}</span></span>
+                        <span class='text-1'> Оперативная память:   <span class='text-2'>{{games.ram}}</span></span>
+                        <span class='text-1'> Видеокарта:           <span class='text-2'>{{games.gpu}}</span></span>
+                        <span class='text-1'> Место на диске:       <span class='text-2'>{{games.hard_disk}}</span></span>
+
+                        <div class='img-game-wrapper'> 
+                            <a href='{{games.image_1.url}}'><img class='img-game' src='{{games.image_1.url}}'/></a> 
+                            <a href='{{games.image_2.url}}'><img class='img-game' src='{{games.image_2.url}}'/></a> 
+                            <a href='{{games.image_3.url}}'><img class='img-game' src='{{games.image_3.url}}'/></a> 
+                            <a href='{{games.image_4.url}}'><img class='img-game' src='{{games.image_4.url}}'/></a> 
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class='col-md-3'>
+
+                    {% if games.price < 1 %}
+
+                        <a href="{{games.torrent.url}}"></a>
+                            <div class="btn-download" data-type="diagonal_swipe_left">
+                                Download
+                            </div>
+                        </a>
+
+                    {% else %}
+
+                        {% if user.is_authenticated %}
+                            
+                            {% if games in userprofile.list_of_purchased_games.all %}       
+                                <a href="{{games.torrent.url}}">
+                                    <div class="btn-download" data-type="diagonal_swipe_left">
+                                        Скачать
+                                    </div>
+                                </a>
+
+                            {% elif games not in userprofile.list_of_purchased_games.all %}
+
+                                <a href="{% url 'main:add-to-cart' games.id %}">
+                                    <div class="btn-download" data-type="diagonal_swipe_left">
+                                        Купить: {{games.price}}руб
+                                    </div>
+                                </a>
+
+                            {% endif %}
+
+                        {% else %}
+                            <a href="{% url 'signup' %}">
+                                <div class="btn-download" data-type="diagonal_swipe_left">
+                                    Купить: {{games.price}}руб
+                                </div>
+                            </a>
+                        {% endif %}
+                    
+                    {% endif %}
+
+                </div>
+
+                <hr style='margin-top: 140px;'>
+
+                    <div style='margin-bottom: 100px;'>
+                        <h3 class='neon-wrapper'><i class="fa fa-gamepad" aria-hidden="true"></i> ГЕЙМПЛЕЙ </h3>
+                            <h4 class='text-4'> - {{games.gameplay_description}}</h4>
+                        <h3 class='neon-wrapper'><i class="fa fa-map-marker" aria-hidden="true"></i> СЮЖЕТ</h3>
+                            <h4 class='text-4'> - {{games.story_description}}<p class='text-2'></h4>
+                        <h3 class='neon-wrapper'><i class="fa fa-tachometer" aria-hidden="true"></i> ИГРОВЫЕ ОССОБЕННОСТИ</h3>
+                            <h4 class='text-4'> - {{games.game_features_description}}</h4>
+                        <h3 class='neon-wrapper'><i class="fa fa-commenting" aria-hidden="true"></i> ОСТАВИТЬ КОММЕНТАРИИ</h3>
+
+                        <div class="comment-form-wrapper">
+                            <form action="{% url 'main:leave_comment' games.id %}" method="POST">
+
+                                {% csrf_token %}
+
+                                {% if user.is_authenticated %}
+                                    <div class="form-group">
+                                        <textarea class="form-control detail__comment_input" name="text" required='' minlength="2" maxlength="320" placeholder="Текст коментария" rows="4" cols="45" style="width: 325px;"></textarea>
+                                    </div>
+
+                                {% else %}
+                                    <div class="form-group">
+                                        <input class="form-control detail__name_input" name="name" required='' minlength="2" maxlength="20" placeholder="Имя" rows="3" cols="45" style="width: 325px;"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <textarea class="form-control detail__comment_input" name="text" required='' minlength="2" maxlength="320" placeholder="Текст коментария" rows="4" cols="45" style="width: 325px;"></textarea>
+                                    </div>
+
+                                {% endif %}
+
+                                <div class="">
+                                    <button class="btn btn-outline-success detail__comment_button">Добавить Коментарии</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <h3 class='neon-wrapper'><i class="fa fa-comments" aria-hidden="true"></i> КОММЕНТАРИИ</h3>
+                        {% if latest_comments_list %}
+                        
+                            {% for post in latest_comments_list %}
+                                <div class="comment">
+                                    {% if post.account_level == 2 %}
+                                        <img style="border: 2px solid gold; box-shadow: 0 0 12px 0px gold;" src="{{post.author_image}}" alt="">
+                                    {% elif post.account_level == 1 %}
+                                        <img style="border: 2px solid gold;" src="{{post.author_image}}" alt="">
+                                    {% else %}
+                                        <img src="{{post.author_image}}" alt="">
+                                    {% endif%}
+                                    
+                                    <h3>{{post.comment_text}}</h3>
+                                    <h5>{{post.comment_time}}</h5>
+                                    <h2>{{post.author_name}}</h2>
+                                    
+                                    <a href="{% url 'main:rank_up' games.id post.id %}" class="rank-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i> {{post.comment_rank_up}}</a>
+                                    <a href="{% url 'main:rank_down' games.id post.id %}" class="rank-down"><i class="fa fa-angle-double-down" aria-hidden="true"></i> {{post.comment_rank_down}}</a>
+                                </div>
+                            {% endfor %}
+                        
+                            
+                        {% else %}
+                            <span class="comment-color-2">Коментарий не найдены ;)</span>
+                        {% endif %}
+                    </div>
+                
+            </div>
+</div>
+
+
+{% include "footer.html" %}
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+
+{% include "header.html" %}
+
+<div class="nav__bar">
+  <a href="#" class="nav__trigger">
+      <div class="bars"></div>
+  </a>        
+</div>
+
+<div style="height:100vh;" class="main">
+
+  <form action="{% url 'main:userprofile_set_info' user.id %}"  method="POST">
+
+  {% csrf_token %}
+  <div class="container">
+      <div class="col-md-5">
+        <div class="profile__div">
+           <img class="profile__img" src="{{userprofile.image.url}}" alt="">
+          <p class="profile__p">Профиль: <span class="profile__span">{{userprofile.user.username}}</span></p>
+          <p class="profile__p">Почта: <span class="profile__span">{{user.email}}</span></p>
+          <p class="profile__p">Номер телефона: <span class="profile__span">{{userprofile.phone}}</span></p>
+          <p class="profile__p">Адрес: <span class="profile__span">{{userprofile.address}}</span></p>
+          <p class="profile__p">Купленные игры:
+            {% for i in userprofile.list_of_purchased_games.all %}
+                <span class="profile__span">{{i}},</span>
+            {% endfor %}
+        </div>
+        
+
+          <input name="email" placeholder='Изменить почту...'>
+          <input name="phone" placeholder='Изменить номер телефона...'>
+          <input name="address" placeholder='Изменить адрес...'>
+
+          <input name="password_old" placeholder='Старый пароль...'>
+          <input name="password_new_1" placeholder='Новый пароль...'>
+          <input name="password_new_2" placeholder='Повторите новый пароль...'>
+          <hr>
+          
+         <button class="btn btn-outline-success">Сохранить</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+{% include "footer.html" %}
+
+{% endblock %}

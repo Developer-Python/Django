@@ -1,0 +1,70 @@
+
+<nav class="nav">
+    <ul class="nav__list">
+		{% if user.is_authenticated %}
+			{% if user.is_superuser %}
+				<li class="nav__item"><a href="{% url 'main:userprofile_get_info' user.id %}"><span class="nav__icon"><i class="fa fa-user" aria-hidden="true"></i></span><span class="nav__icon_username">{{user.username}} <i class="fa fa-check-circle" aria-hidden="true"></i></span></a></li>
+			{% elif user.is_staff %}
+				<li class="nav__item"><a href="{% url 'main:userprofile_get_info' user.id %}"><span class="nav__icon"><i class="fa fa-user" aria-hidden="true"></i></span><span class="nav__icon_username">{{user.username}} <i class="fa fa-check" aria-hidden="true"></i></i></span></a></li>
+			{% else %}
+				<li class="nav__item"><a href="{% url 'main:userprofile_get_info' user.id %}"><span class="nav__icon"><i class="fa fa-user" aria-hidden="true"></i></span><span class="nav__icon_username">{{user.username}}</i></i></span></a></li>
+			{% endif %}
+			<hr class="nav__item_hr">
+			<li class="nav__item"><a href="/"><span class="nav__icon"><i class="fa fa-home" aria-hidden="true"></i></span>Главная</a></li>
+			<li class="nav__item"><a href="http://127.0.0.1:8000/news/"><span class="nav__icon"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>Новинки</a></li>
+			<li class="nav__item">
+			
+				<ul class="accordion-menu">
+					<li>
+						<div class="dropdownlink">
+							<span class="nav__category"><i class="fa fa-th" aria-hidden="true"></i></span>
+							Категории <span class="nav__caret-down"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+						</div>
+						<ul class="submenuItems">
+							{% for category in categories %}
+								<a href="http://127.0.0.1:8000/category/{{category.slug}}/">{{category.name}}</a>
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
+				
+			</li>
+			<li class="nav__item"><a href="{% url 'main:cart' %}"><span class="nav__icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span>Корзина <span class='badge badge-pill badge-danger'>{{count_products_cart}}</span> </a></li>
+			<li class="nav__item"><a href="http://127.0.0.1:8000/other/"><span class="nav__icon"><i class="fa fa-cube" aria-hidden="true"></i></span>Разное</a></li>
+			<li class="nav__item"><a href="{% url 'logout' %}"><span class="nav__icon"><i class="fa fa-times" aria-hidden="true"></i></span>Выйти</a></li>
+			<hr class="nav__item_hr">
+		{% else %}
+			<li class="nav__item">
+				<span class="nav__icon"><i class="fa fa-users" aria-hidden="true"></i></span>
+				<a href="{% url 'login' %}">Вход</a>
+				<span class="nav__symbol">/</span>
+				<a href="{% url 'signup' %}">Регистрация</a>
+			</li>
+			<hr class="nav__item_hr">
+			<li class="nav__item"><a href="/"><span class="nav__icon"><i class="fa fa-home" aria-hidden="true"></i></span>Главная</a></li>
+			<li class="nav__item"><a href="http://127.0.0.1:8000/news/"><span class="nav__icon"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>Новинки</a></li>
+			<li class="nav__item">
+			
+				<ul class="accordion-menu">
+					<li>
+						<div class="dropdownlink">
+							<span class="nav__category"><i class="fa fa-th" aria-hidden="true"></i></span>
+							Категории <span class="nav__caret-down"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+						</div>
+						<ul class="submenuItems">
+							{% for category in categories %}
+								<a href="http://127.0.0.1:8000/category/{{category.slug}}/">{{category.name}}</a>
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
+				
+			</li>
+			<li class="nav__item"><a href="http://127.0.0.1:8000/other/"><span class="nav__icon"><i class="fa fa-cube" aria-hidden="true"></i></span>Разное</a></li>
+			
+			<hr class="nav__item_hr">
+		{% endif %}
+		
+        <li class="nav__item"><a href="http://127.0.0.1:8000/about/"><span class="nav__icon"><i class="fa fa-paper-plane" aria-hidden="true"></i></span>О сайте</a></li>
+    </ul>
+</nav>

@@ -1,0 +1,37 @@
+<article class="article">
+    <ul class="pagination">
+        <li class="page-item"style="">
+            <a class="page-item-1" href="?page={{ Page.start_index }}">
+                Первая
+            </a>
+        </li>
+        <li class="page-item"style="">
+            {% if page.has_previous %}
+            <a class="page-item-2" href="?page={{ page.previous_page_number }}" aria-label="Предыдущая">
+                <span aria-hidden="true">«</span>
+                <span class="sr-only">Предыдущая</span>
+            </a>
+            {% endif %}
+        </li>
+        <li class="page-item active"style="">
+            <a class="page-item-3" href="#">
+                <div class="sign">
+                    <span class="sign__word">{{ page.number }} / {{ page.paginator.num_pages }}</span>
+                </div>
+            </a>
+        </li>
+        <li class="page-item"style="">
+        {% if page.has_next %}
+            <a class="page-item-4" href="?page={{ page.next_page_number }}" aria-label="Следующая">
+                <span aria-hidden="true">»</span>
+                <span class="sr-only">Следующая</span>
+            </a>
+        {% endif %}
+        </li>
+        <li class="page-item"style="">
+            <a class="page-item-5" href="?page={{ page.end_index }}">
+                Последняя
+            </a>
+        </li>
+    </ul>
+</article>

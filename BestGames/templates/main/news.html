@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+
+{% include "header.html" %}
+
+<div class="nav__bar">
+  <a href="#" class="nav__trigger">
+      <div class="bars"></div>
+  </a>        
+</div>
+
+
+
+<main class="main">
+
+    <section class="content">
+        <div class="info__wrapper">
+            <h2> >>> Новинки </h2>
+        </div>
+    </section>
+
+    <form action="{% url 'main:search_results' %}">
+      <div class="input-wrapper">
+        <input name='q' required='' minlength="3" maxlength="90" type="text" placeholder="Найти...">          
+      </div>
+    </form>
+
+    <hr>
+
+    <section class="content">
+    
+      {% if posts %}
+        {% for post in posts %}
+
+            <article class="article">
+              
+                <span class="article__title">{{post.title}}</span>
+                <img class="article__image" src="{{post.image_wrapper.url}}" alt="user" />
+
+                {% if post.pro == '+' %}
+                  <span class="article__pro">PRO</span>
+                {% endif %}
+                <p class="article__content">{{post.title_description}}</p>
+
+                {% if post.price < 1 %}
+                  <a class="article__button btn btn-outline-warning" href="{{post.torrent.url}}">Скачать</a>
+
+                {% else %}
+        
+                  {% if user.is_authenticated %}
+
+                      {% if post in userprofile.list_of_purchased_games.all %}       
+                        <a class='article__button btn btn-outline-warning' href="{{post.torrent.url}}">Скачать</a>
+                      {% elif post not in userprofile.list_of_purchased_games.all %}
+                        <a class='article__button btn btn-outline-warning' href="{% url 'main:add-to-cart' post.id %}">Купить: {{post.price}}руб</a>
+                      {% endif %}
+
+                  {% else %}
+                    <a class='article__button btn btn-outline-warning' href="{% url 'signup' %}">Купить: {{post.price}}руб</a>
+                  {% endif %}
+
+                {% endif %}
+
+                <a class='article__button btn btn-outline-danger' href="{% url 'main:detail' post.id %}">Подробнее...</a>
+
+                <div class='article__rating'>
+                  <span class="article__views"><i class="fa fa-eye" aria-hidden="true"></i> {{post.views}}</span>
+                  <a href="{% url 'main:like' post.id %}">
+                    <span class="article__like"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{post.like}}</span>
+                  </a>
+                  <a href="{% url 'main:dislike' post.id %}">
+                    <span class="article__dislike"><i class="fa fa-thumbs-down"aria-hidden="true"></i> {{post.dislike}}</span>
+                  </a>
+                </div>
+                
+                <p class="article__time">
+                  {% for category in post.category.all %}
+                    <span class="article__category_item">{{category.name}}</span>
+                  {% endfor %}
+                </p>
+                  <hr>
+            </article>
+        
+      {% endfor %}
+
+      {% include "pagination.html" with page=posts %}
+
+      {% elif object_list %}
+        {% for post in object_list %}
+          <article class="article">
+            
+            <span class="article__title">{{post.title}}</span>
+            <img class="article__image" src="{{post.image_wrapper.url}}" alt="user" />
+            {% if post.pro == '+' %}
+              <span class="article__pro">PRO</span>
+            {% endif %}
+            <p class="article__content">{{post.title_description}}</p>
+            {% if post.price < 1 %}
+              <a class="article__button btn btn-outline-warning" href="{{post.torrent.url}}">Скачать</a>
+              {% else %}
+    
+              {% if user.is_authenticated %}
+                <a class='article__button btn btn-outline-warning' href="{% url 'main:add-to-cart' post.id %}">Купить: {{post.price}}руб</a>
+              {% else %}
+                <a class='article__button btn btn-outline-warning' href="{% url 'signup' %}">Купить: {{post.price}}руб</a>
+              {% endif %}
+    
+            {% endif %}
+            <a class='article__button btn btn-outline-danger' href="{% url 'main:detail' post.id %}">Подробнее...</a>
+
+            <div class='article__rating'>
+              <span class="article__views"><i class="fa fa-eye" aria-hidden="true"></i> {{post.views}}</span>
+              <a href="{% url 'main:like' post.id %}">
+                <span class="article__like"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{post.like}}</span>
+              </a>
+              <a href="{% url 'main:dislike' post.id %}">
+                <span class="article__dislike"><i class="fa fa-thumbs-down"aria-hidden="true"></i> {{post.dislike}}</span>
+              </a>
+            </div>
+            
+            <p class="article__time">
+              {% for category in post.category.all %}
+                <span class="article__category_item">{{category.name}}</span>
+              {% endfor %}
+            </p>
+              <hr>
+          </article>
+        {% endfor %}
+      {% else %}
+         {% include "error.html" %}
+      {% endif %}
+      
+    </section>
+</main>
+
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/iamdustan-smoothscroll/0.4.0/smoothscroll.js'></script>
+
+{% include "footer.html" %}
+
+{% endblock %}
