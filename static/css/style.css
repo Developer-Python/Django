@@ -286,7 +286,7 @@ a:hover {
 
 .input-wrapper {
   width: 680px;
-  margin: 50px auto 20px auto;
+  margin: 0px auto 20px auto;
   position: relative;
 }
 
@@ -352,6 +352,7 @@ input {
   max-width: 100%;
   text-align: center;
 }
+
 
 .card-container .pro {
   color: #231E39;
@@ -447,10 +448,34 @@ a.primary.ghost:hover {
   box-shadow: inset 0px 0px 11px 0px #00adffc7;
 }
 
+.info__wrapper {
+  float: right;
+  padding: 5vmin 6vmin 1vmin 6vmin !important;
+  display: inline-block !important;
+}
+
+.info__wrapper h2 {
+  color: aqua;
+  font-family: 'Play';
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.info__wrapper h3 {
+  color: aquamarine;
+  font-size: 13px;
+  font-family: 'Play';
+}
 
 /* ================= */
 /*       Text       */
 /* ================= */
+
+.btn-sort {
+    float: left;
+    margin: 5px 8px;
+}
+
 .about__p {
   display: block;
   font-size: 14px;
@@ -533,7 +558,7 @@ a.primary.ghost:hover {
 }
 
 .detail__name_input {
-  width: 352px !important;
+  min-width: 352px;
   height: 35px !important;
   margin: 20px 22px -10px;
   font-size: 15px;
@@ -543,7 +568,7 @@ a.primary.ghost:hover {
   border-radius: 7px;
 }
 
-
+dropdown
 .detail__comment_button {
   font-family: 'Jura';
   margin: 0px 22px 50px;
@@ -561,6 +586,7 @@ a.primary.ghost:hover {
 }
 
 .comment-color-2 {
+  color: aliceblue;
   border: 1px solid aqua;
   padding: 10px 20px;
   text-align: center;
@@ -640,7 +666,7 @@ a.primary.ghost:hover {
     -webkit-transition: 1s ease-out;
     transition: 1s ease-out;
 }
-  
+
   /*-------------- hover types --------------*/
   [data-type]:before {
     -webkit-transition: 0.5s;
@@ -656,7 +682,7 @@ a.primary.ghost:hover {
     color: #e91e63;
     z-index: 8;
   }
-  
+
   /*--------- Swipe ---------------*/
   [data-type="swipe"]:before {
     content: '';
@@ -678,7 +704,7 @@ a.primary.ghost:hover {
     -webkit-transition-duration: 0.5s;
     transition-duration: 0.5s;
   }
-  
+
   /*--------position aware -----------*/
   [data-type="pos_aware"]:before {
     content: '';
@@ -697,7 +723,7 @@ a.primary.ghost:hover {
     -webkit-transform: scale(8.3);
     transform: scale(8.3);
   }
-  
+
   /*--------------- diagonal_swipe_left -----------*/
   [data-type="diagonal_swipe_left"]:before {
     content: '';
@@ -716,7 +742,7 @@ a.primary.ghost:hover {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
-  
+
   /*--------------- diagonal_swipe_right -----------*/
   [data-type="diagonal_swipe_right"]:before {
     content: '';
@@ -735,7 +761,7 @@ a.primary.ghost:hover {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
-  
+
   /*--------------- double_swipe -----------*/
   [data-type="double_swipe"]:before, [data-type="double_swipe"]:after {
     content: '';
@@ -769,7 +795,7 @@ a.primary.ghost:hover {
   [data-type="double_swipe"]:hover:after {
     transform: translateX(-20%);
   }
-  
+
   /*--------------- colusion -----------*/
   [data-type="colusion"]:before, [data-type="colusion"]:after {
     content: '';
@@ -805,7 +831,7 @@ a.primary.ghost:hover {
     -webkit-transform: translateX(-530%) scale(10);
     transform: translateX(-530%) scale(10);
   }
-  
+
   /*--------------- letter_spacing ---------------------*/
   [data-type="letter_spacing"] {
     border: none;
@@ -1241,7 +1267,7 @@ h6 {
   width: calc(100% - 60px);
   height: 100vh;
   margin-left: 60px;
-  background: url(/static/1.jpg) no-repeat;
+  background: url(/static/main_theme_page.jpg) no-repeat;
   background-attachment: fixed;
   background-position: center;
   -webkit-transition: 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1565,11 +1591,11 @@ h6 {
 }
 
 .article__buy {
-  
+
 }
 
 .article__next {
-  
+
 }
 
 .article__title {
@@ -1637,12 +1663,34 @@ h6 {
   font-family: Jura;
   width: 200px;
 }
-
-
+pro
 /* ======================== */
 /*          DropDown        */
 /* ======================== */
+.btn-sort {
+    font-size: 15px;
+}
 
+.dropdown-sort {
+    margin-bottom: 120px;
+
+}
+
+.dropdown-menu-sort {
+    width: 680px;
+    height: 120px;
+    opacity: 0.9;
+    background: rgb(48 121 11 / 13%);
+    margin-top: 3px;
+    border: 2px solid rgb(130 130 130 / 54%);
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: rgb(16 255 0 / 18%) 0px 9px 20px 2px;
+}
+
+.dropdown-item-sort {
+    display: contents;
+}
 
 .nav__caret-down {
   position: absolute;
@@ -1692,7 +1740,7 @@ h6 {
   display: none;
 }
 .submenuItems li {
-  
+
 }
 
 .submenuItems a {
@@ -1740,7 +1788,12 @@ h6 {
 .card__title {
   margin: 10px 0px 0px;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
+  text-overflow: ellipsis;
+}
+
+.card__title p {
+  text-overflow: ellipsis;
 }
 
 .card__hr {
@@ -2192,7 +2245,7 @@ footer {
 }
 
 .tabs > li.active {
-  background: #e4e4e4;
+  background: #aeb5ce;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   color: black;
@@ -2208,7 +2261,6 @@ footer {
 }
 
 .tab__content {
-  background-color: white;
   position: relative;
   width: 100%;
   border-radius: 5px;
@@ -2227,8 +2279,8 @@ footer {
   text-align: center;
   border-radius: 5px;
   width: 100%;
-  padding: 50px 80px 50px 80px;
-  background-color: white;
+  padding: 50px 80px 50px 35px;
+  background-color: #7d87a8ab;
 }
 
 .content__wrapper h2 {
@@ -2244,19 +2296,26 @@ footer {
   border-radius: 5px;
 }
 
+
+.profile__div {
+  margin-top: 80px;
+}
+
+
 .profile__img {
-  display: block;
+  float: left;
   min-width: 160px;
   max-width: 160px;
-  margin: 0px auto;
+  margin: 0px 0px 0px 0px;
   padding: 5px 32px 5px 0px;
 }
 
 .profile__label {
   font-size: 18px;
-  color: black;
   font-family: sans-serif;
   margin-left: -31px;
+  color: deeppink;
+  text-shadow: 0 0 8px black;
 }
 
 .profile__hr {
@@ -2270,17 +2329,18 @@ footer {
   text-align: left;
   font-size: 16px;
   font-family: 'Play';
-  color: mediumvioletred;
+  color: deeppink;
+  text-shadow: 0 0 8px black;
 }
 
 .profile__span {
   font-family: 'Jura';
-  color: black;
+  color: white;
   margin-left: 5px;
 }
 
 .profile__input {
-  color: black;
+  color: white;
   min-width: 40%;
   margin: 5px 10px;
   float: left;
@@ -2299,22 +2359,6 @@ footer {
   width: 330px !important;
   height: 46px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2377,4 +2421,96 @@ margin-top: 2px;
 /* Just looks nicer */
 .credit-card-box .panel-heading img {
   min-width: 180px;
+}
+
+.error-pay {
+  border: 1px solid red;
+  padding: 23px 18px 30px 18px;
+  margin: 15px;
+}
+
+.error-pay h2 {
+  color: silver;
+  font-weight: 900;
+  margin-bottom: 14px;
+  font-family: 'Jura';
+  font-size: 29px;
+}
+
+.error-pay h3 {
+  color: brown;
+  font-family: 'Play';
+  font-size: 22px;
+  text-shadow: 1px 1px 2px black;
+}
+
+.error-pay button {
+  font-size: 18px;
+  margin: 15px 0px;
+  padding: 8px 20px;
+}
+
+/* comments */
+.comment {
+  border: 1px solid aqua;
+  background: #7fffd421;
+  margin: 15px;
+  border-radius: 5px;
+  display: block;
+  padding: 15px;
+}
+
+.comment img {
+  max-height: 80px;
+  min-height: 80px;
+  max-width: 80px;
+  min-width: 80px;
+  border: 1px solid aqua;
+  border-radius: 75px;
+}
+
+.comment h2 {
+  display: block;
+  color: yellowgreen;
+  text-shadow: 1px 1px 4px black;
+  margin: 5px 5px;
+  font-family: 'Play';
+  word-break: break-all;
+  font-size: 15px;
+  width: 75px;
+  text-align: center;
+}
+
+.comment h3 {
+  display: inline-block;
+  margin: 20px 12px;
+  width: 785px;
+  color: azure;
+  font-family: 'Jura';
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.comment h5 {
+  display: inline-block;
+  color: red;
+  float: right;
+  background: #ff005e1c;
+  border: 1px solid;
+  border-radius: 30px;
+  padding: 5px 13px;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+.comment .rank-up{
+  color: lawngreen;
+  font-size: 16px;
+  margin: 2px 7px;
+}
+
+.comment .rank-down{
+  color: red;
+  font-size: 16px;
+  margin: 2px 7px;
 }

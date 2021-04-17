@@ -9,7 +9,7 @@
 <div class="nav__bar">
   <a href="#" class="nav__trigger">
       <div class="bars"></div>
-  </a>        
+  </a>
 </div>
 
 
@@ -24,9 +24,36 @@
 
     <form action="{% url 'main:search_results' %}">
       <div class="input-wrapper">
-        <input name='q' required='' minlength="3" maxlength="90" type="text" placeholder="Найти...">          
+        <input name='q' required='' minlength="3" maxlength="90" type="text" placeholder="Найти...">
       </div>
     </form>
+
+    <div class="">
+        <div class="input-wrapper">
+          <div class="dropdown dropdown-sort show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" style="font-size: 16px; opacity: 0.9;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Сортировать игры по:
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-sort" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:date' %}"><a href="/date/"><button class="btn btn-outline-success btn-sort" type="button" name="date">Дате</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:pro' %}"><a href="/pro/"><button class="btn btn-outline-success btn-sort" type="button" name="pro">Популярности</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:like' %}"><a href="/like/"><button class="btn btn-outline-success btn-sort" type="button" name="like">Положительным комментариям</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:views' %}"><a href="/views/"><button class="btn btn-outline-success btn-sort" type="button" name="views">Просмотрам</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:name' %}"><a href="/name/"><button class="btn btn-outline-success btn-sort" type="button" name="name">Имени[A-Z]</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:price' %}"><a href="/price/"><button class="btn btn-outline-success btn-sort" type="button" name="price">Цене</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:hard_disk' %}"><a href="/hard_disk/"><button class="btn btn-outline-success btn-sort" type="button" name="size">Размеру игры</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:language_russian' %}"><a href="/language_russian/"><button class="btn btn-outline-success btn-sort" type="button" name="language_russian">Русскому языку</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:language_english' %}"><a href="/language_english/"><button class="btn btn-outline-success btn-sort" type="button" name="language_english">Английскому языку</button></a></form></a>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+
 
     <hr>
 
@@ -36,7 +63,7 @@
         {% for post in posts %}
 
             <article class="article">
-              
+
                 <span class="article__title">{{post.title}}</span>
                 <img class="article__image" src="{{post.image_wrapper.url}}" alt="user" />
 
@@ -49,10 +76,10 @@
                   <a class="article__button btn btn-outline-warning" href="{{post.torrent.url}}">Скачать</a>
 
                 {% else %}
-        
+
                   {% if user.is_authenticated %}
 
-                      {% if post in userprofile.list_of_purchased_games.all %}       
+                      {% if post in userprofile.list_of_purchased_games.all %}
                         <a class='article__button btn btn-outline-warning' href="{{post.torrent.url}}">Скачать</a>
                       {% elif post not in userprofile.list_of_purchased_games.all %}
                         <a class='article__button btn btn-outline-warning' href="{% url 'main:add-to-cart' post.id %}">Купить: {{post.price}}руб</a>
@@ -75,7 +102,7 @@
                     <span class="article__dislike"><i class="fa fa-thumbs-down"aria-hidden="true"></i> {{post.dislike}}</span>
                   </a>
                 </div>
-                
+
                 <p class="article__time">
                   {% for category in post.category.all %}
                     <span class="article__category_item">{{category.name}}</span>
@@ -83,7 +110,7 @@
                 </p>
                   <hr>
             </article>
-        
+
       {% endfor %}
 
       {% include "pagination.html" with page=posts %}
@@ -91,7 +118,7 @@
       {% elif object_list %}
         {% for post in object_list %}
           <article class="article">
-            
+
             <span class="article__title">{{post.title}}</span>
             <img class="article__image" src="{{post.image_wrapper.url}}" alt="user" />
             {% if post.pro == '+' %}
@@ -101,13 +128,15 @@
             {% if post.price < 1 %}
               <a class="article__button btn btn-outline-warning" href="{{post.torrent.url}}">Скачать</a>
               {% else %}
-    
+
               {% if user.is_authenticated %}
-                <a class='article__button btn btn-outline-warning' href="{% url 'main:add-to-cart' post.id %}">Купить: {{post.price}}руб</a>
-              {% else %}
-                <a class='article__button btn btn-outline-warning' href="{% url 'signup' %}">Купить: {{post.price}}руб</a>
-              {% endif %}
-    
+
+                  {% if post in userprofile.list_of_purchased_games.all %}
+                    <a class='article__button btn btn-outline-warning' href="{{post.torrent.url}}">Скачать</a>
+                  {% elif post not in userprofile.list_of_purchased_games.all %}
+                    <a class='article__button btn btn-outline-warning' href="{% url 'main:add-to-cart' post.id %}">Купить: {{post.price}}руб</a>
+                  {% endif %}
+                {% endif %}
             {% endif %}
             <a class='article__button btn btn-outline-danger' href="{% url 'main:detail' post.id %}">Подробнее...</a>
 
@@ -120,7 +149,7 @@
                 <span class="article__dislike"><i class="fa fa-thumbs-down"aria-hidden="true"></i> {{post.dislike}}</span>
               </a>
             </div>
-            
+
             <p class="article__time">
               {% for category in post.category.all %}
                 <span class="article__category_item">{{category.name}}</span>
@@ -129,10 +158,11 @@
               <hr>
           </article>
         {% endfor %}
+
       {% else %}
          {% include "error.html" %}
       {% endif %}
-      
+
     </section>
 </main>
 

@@ -457,7 +457,7 @@ a.primary.ghost:hover {
 }
 
 .info__wrapper h3 {
-  
+
 }
 
 /* ================= */
@@ -652,7 +652,7 @@ a.primary.ghost:hover {
     -webkit-transition: 1s ease-out;
     transition: 1s ease-out;
 }
-  
+
   /*-------------- hover types --------------*/
   [data-type]:before {
     -webkit-transition: 0.5s;
@@ -668,7 +668,7 @@ a.primary.ghost:hover {
     color: #e91e63;
     z-index: 8;
   }
-  
+
   /*--------- Swipe ---------------*/
   [data-type="swipe"]:before {
     content: '';
@@ -690,7 +690,7 @@ a.primary.ghost:hover {
     -webkit-transition-duration: 0.5s;
     transition-duration: 0.5s;
   }
-  
+
   /*--------position aware -----------*/
   [data-type="pos_aware"]:before {
     content: '';
@@ -709,7 +709,7 @@ a.primary.ghost:hover {
     -webkit-transform: scale(8.3);
     transform: scale(8.3);
   }
-  
+
   /*--------------- diagonal_swipe_left -----------*/
   [data-type="diagonal_swipe_left"]:before {
     content: '';
@@ -728,7 +728,7 @@ a.primary.ghost:hover {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
-  
+
   /*--------------- diagonal_swipe_right -----------*/
   [data-type="diagonal_swipe_right"]:before {
     content: '';
@@ -747,7 +747,7 @@ a.primary.ghost:hover {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
-  
+
   /*--------------- double_swipe -----------*/
   [data-type="double_swipe"]:before, [data-type="double_swipe"]:after {
     content: '';
@@ -781,7 +781,7 @@ a.primary.ghost:hover {
   [data-type="double_swipe"]:hover:after {
     transform: translateX(-20%);
   }
-  
+
   /*--------------- colusion -----------*/
   [data-type="colusion"]:before, [data-type="colusion"]:after {
     content: '';
@@ -817,7 +817,7 @@ a.primary.ghost:hover {
     -webkit-transform: translateX(-530%) scale(10);
     transform: translateX(-530%) scale(10);
   }
-  
+
   /*--------------- letter_spacing ---------------------*/
   [data-type="letter_spacing"] {
     border: none;
@@ -1253,7 +1253,7 @@ h6 {
   width: calc(100% - 60px);
   height: 100vh;
   margin-left: 60px;
-  background: url(/static/1.jpg) no-repeat;
+  background: url(/static/main_theme_page.jpg) no-repeat;
   background-attachment: fixed;
   background-position: center;
   -webkit-transition: 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1577,11 +1577,11 @@ h6 {
 }
 
 .article__buy {
-  
+
 }
 
 .article__next {
-  
+
 }
 
 .article__title {
@@ -1704,7 +1704,7 @@ h6 {
   display: none;
 }
 .submenuItems li {
-  
+
 }
 
 .submenuItems a {

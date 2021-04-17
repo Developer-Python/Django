@@ -10,9 +10,9 @@
 <div class="nav__bar">
     <a href="#" class="nav__trigger">
         <div class="bars"></div>
-    </a>        
+    </a>
 </div>
-  
+
 <div style="height:100vh;" class="main">
             <div class='container'>
                 <div style='margin-top: 40px' class='row'>
@@ -35,11 +35,11 @@
                         <span class='text-1'> Видеокарта:           <span class='text-2'>{{games.gpu}}</span></span>
                         <span class='text-1'> Место на диске:       <span class='text-2'>{{games.hard_disk}}</span></span>
 
-                        <div class='img-game-wrapper'> 
-                            <a href='{{games.image_1.url}}'><img class='img-game' src='{{games.image_1.url}}'/></a> 
-                            <a href='{{games.image_2.url}}'><img class='img-game' src='{{games.image_2.url}}'/></a> 
-                            <a href='{{games.image_3.url}}'><img class='img-game' src='{{games.image_3.url}}'/></a> 
-                            <a href='{{games.image_4.url}}'><img class='img-game' src='{{games.image_4.url}}'/></a> 
+                        <div class='img-game-wrapper'>
+                            <a href='{{games.image_1.url}}'><img class='img-game' src='{{games.image_1.url}}'/></a>
+                            <a href='{{games.image_2.url}}'><img class='img-game' src='{{games.image_2.url}}'/></a>
+                            <a href='{{games.image_3.url}}'><img class='img-game' src='{{games.image_3.url}}'/></a>
+                            <a href='{{games.image_4.url}}'><img class='img-game' src='{{games.image_4.url}}'/></a>
                         </div>
 
                     </div>
@@ -58,8 +58,8 @@
                     {% else %}
 
                         {% if user.is_authenticated %}
-                            
-                            {% if games in userprofile.list_of_purchased_games.all %}       
+
+                            {% if games in userprofile.list_of_purchased_games.all %}
                                 <a href="{{games.torrent.url}}">
                                     <div class="btn-download" data-type="diagonal_swipe_left">
                                         Скачать
@@ -83,7 +83,7 @@
                                 </div>
                             </a>
                         {% endif %}
-                    
+
                     {% endif %}
 
                 </div>
@@ -129,7 +129,7 @@
 
                         <h3 class='neon-wrapper'><i class="fa fa-comments" aria-hidden="true"></i> КОММЕНТАРИИ</h3>
                         {% if latest_comments_list %}
-                        
+
                             {% for post in latest_comments_list %}
                                 <div class="comment">
                                     {% if post.account_level == 2 %}
@@ -139,22 +139,22 @@
                                     {% else %}
                                         <img src="{{post.author_image}}" alt="">
                                     {% endif%}
-                                    
+
                                     <h3>{{post.comment_text}}</h3>
                                     <h5>{{post.comment_time}}</h5>
                                     <h2>{{post.author_name}}</h2>
-                                    
+
                                     <a href="{% url 'main:rank_up' games.id post.id %}" class="rank-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i> {{post.comment_rank_up}}</a>
                                     <a href="{% url 'main:rank_down' games.id post.id %}" class="rank-down"><i class="fa fa-angle-double-down" aria-hidden="true"></i> {{post.comment_rank_down}}</a>
                                 </div>
                             {% endfor %}
-                        
-                            
+
+
                         {% else %}
                             <span class="comment-color-2">Коментарий не найдены ;)</span>
                         {% endif %}
                     </div>
-                
+
             </div>
 </div>
 

@@ -91,7 +91,7 @@ class Migration(migrations.Migration):
                 ('image_3', models.ImageField(upload_to='game/', verbose_name='3) Изображение из игры')),
                 ('image_4', models.ImageField(upload_to='game/', verbose_name='4) Изображение из игры')),
                 ('image_wrapper', models.ImageField(upload_to='game/', verbose_name='Обложка')),
-                ('torrent', models.FileField(upload_to='documents/', verbose_name='Torrent файл')),
+                ('torrent', models.FileField(upload_to='torrents/', verbose_name='Torrent файл')),
                 ('like', models.IntegerField(default='0', verbose_name='Нравиться')),
                 ('dislike', models.IntegerField(default='0', verbose_name='Не нравиться')),
                 ('views', models.IntegerField(default='0', verbose_name='Просмотры')),

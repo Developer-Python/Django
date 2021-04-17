@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     # Мой приложения
     'main.apps.MainConfig',
     'accounts.apps.AccountsConfig',
-    'sberbank.apps.AppConfig',
 ]
 
 
@@ -115,11 +114,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = [STATIC_DIR]
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 MEDIA_URL = '/media/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

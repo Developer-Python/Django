@@ -56,16 +56,14 @@ class Game(models.Model):
 	image_3 = models.ImageField('3) Изображение из игры', upload_to='game/')
 	image_4 = models.ImageField('4) Изображение из игры', upload_to='game/')
 	image_wrapper = models.ImageField('Обложка', upload_to='game/')
-	torrent = models.FileField('Torrent файл', upload_to='documents/')
+	torrent = models.FileField('Torrent файл', upload_to='torrents/')
 	like = models.IntegerField('Нравиться', default='0')
 	dislike = models.IntegerField('Не нравиться', default='0')
 	views = models.IntegerField('Просмотры', default='0')
 	pro = models.CharField('PRO', max_length=1)
 	price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Стоймость игры')
-	pub_date = models.DateTimeField('Дата публикаций игры на сайте', auto_now=True)
+	pub_date = models.DateTimeField('Дата публикаций игры на сайте')
 
-	def new_game_pub(self):
-		return self.pub_date >= (timezone.now() - datetime.timedelta(days=7))
 
 	def __str__(self):
 		return self.title
@@ -91,7 +89,7 @@ class Customer(models.Model):
 
 	def __str__(self):
 		return self.user.username
-	
+
 	class Meta:
 		verbose_name = 'Пользователь'
 		verbose_name_plural = '6) Пользователи (Дополнительно)'
@@ -132,12 +130,12 @@ class Cart(models.Model):
 
 	def __str__(self):
 		return str(self.id)
-	
+
 	class Meta:
 		verbose_name = 'Корзина'
 		verbose_name_plural = '4) Корзина'
 
-	
+
 
 class Comment(models.Model):
 
@@ -145,7 +143,7 @@ class Comment(models.Model):
 	'''     Модель: Комментария    '''
 	'''============================'''
 
-	games = models.ForeignKey(Game, on_delete=models.CASCADE)	
+	games = models.ForeignKey(Game, on_delete=models.CASCADE)
 	author_name = models.CharField('Имя автора', max_length=25)
 	author_image = models.ImageField(verbose_name='Аватарка', blank=True, upload_to='user/')
 	account_level = models.IntegerField('Уровень аккаунта', default='0')
@@ -172,4 +170,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 	if created:
 		Customer.objects.create(user=instance, image='/media/user/1.jpg')
-

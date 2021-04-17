@@ -9,6 +9,16 @@ app_name = 'main'
 
 urlpatterns = [
 	path("", views.GameView.as_view(), name='game'),
+	path("date/", views.GameView.as_view(), name='date'),
+	path("pro/", views.GameView.as_view(), name='pro'),
+	path("like/", views.GameView.as_view(), name='like'),
+	path("price/", views.GameView.as_view(), name='price'),
+	path("hard_disk/", views.GameView.as_view(), name='hard_disk'),
+	path("language_russian/", views.GameView.as_view(), name='language_russian'),
+	path("language_english/", views.GameView.as_view(), name='language_english'),
+	path("views/", views.GameView.as_view(), name='views'),
+	path("download/", views.GameView.as_view(), name='download'),
+	path("name/", views.GameView.as_view(), name='name'),
 	path('cart/', views.CartView.as_view(), name='cart'),
 	path('search/', views.SearchResultView.as_view(), name='search_results'),
 	path('news/', views.NewsGamesView.as_view(), name='news_games_view'),
