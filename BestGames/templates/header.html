@@ -13,7 +13,7 @@
 			<li class="nav__item"><a href="/"><span class="nav__icon"><i class="fa fa-home" aria-hidden="true"></i></span>Главная</a></li>
 			<li class="nav__item"><a href="http://127.0.0.1:8000/news/"><span class="nav__icon"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>Новинки</a></li>
 			<li class="nav__item">
-			
+
 				<ul class="accordion-menu">
 					<li>
 						<div class="dropdownlink">
@@ -27,7 +27,7 @@
 						</ul>
 					</li>
 				</ul>
-				
+
 			</li>
 			<li class="nav__item"><a href="{% url 'main:cart' %}"><span class="nav__icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span>Корзина <span class='badge badge-pill badge-danger'>{{count_products_cart}}</span> </a></li>
 			<li class="nav__item"><a href="http://127.0.0.1:8000/other/"><span class="nav__icon"><i class="fa fa-cube" aria-hidden="true"></i></span>Разное</a></li>
@@ -44,7 +44,7 @@
 			<li class="nav__item"><a href="/"><span class="nav__icon"><i class="fa fa-home" aria-hidden="true"></i></span>Главная</a></li>
 			<li class="nav__item"><a href="http://127.0.0.1:8000/news/"><span class="nav__icon"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>Новинки</a></li>
 			<li class="nav__item">
-			
+
 				<ul class="accordion-menu">
 					<li>
 						<div class="dropdownlink">
@@ -58,13 +58,13 @@
 						</ul>
 					</li>
 				</ul>
-				
+
 			</li>
 			<li class="nav__item"><a href="http://127.0.0.1:8000/other/"><span class="nav__icon"><i class="fa fa-cube" aria-hidden="true"></i></span>Разное</a></li>
-			
+
 			<hr class="nav__item_hr">
 		{% endif %}
-		
-        <li class="nav__item"><a href="http://127.0.0.1:8000/about/"><span class="nav__icon"><i class="fa fa-paper-plane" aria-hidden="true"></i></span>О сайте</a></li>
+		<li class="nav__item"><a href="http://127.0.0.1:8000/about/"><span class="nav__icon"><i class="fa fa-paper-plane" aria-hidden="true"></i></span>О сайте</a></li>
+        <li class="nav__item"><span class="nav__icon"><i class="fa fa-bar-chart" aria-hidden="true"></i></span><span style="font-size: 14px; color: aquamarine;">Пользователей зарегистрированно: {{people}}</span></li>
     </ul>
 </nav>

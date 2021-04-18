@@ -64,7 +64,7 @@
 
             <article class="article">
 
-                <span class="article__title">{{post.title}}</span>
+                <span class="article__title">{{post.title}} ({{post.data}})</span>
                 <img class="article__image" src="{{post.image_wrapper.url}}" alt="user" />
 
                 {% if post.pro == '+' %}
@@ -73,14 +73,14 @@
                 <p class="article__content">{{post.title_description}}</p>
 
                 {% if post.price < 1 %}
-                  <a class="article__button btn btn-outline-warning" href="{{post.torrent.url}}">Скачать</a>
+                  <a class="article__button btn btn-outline-warning" href="{{post.torrent.url}}">Скачать {{post.hard_disk}}</a>
 
                 {% else %}
 
                   {% if user.is_authenticated %}
 
                       {% if post in userprofile.list_of_purchased_games.all %}
-                        <a class='article__button btn btn-outline-warning' href="{{post.torrent.url}}">Скачать</a>
+                        <a class='article__button btn btn-outline-warning' href="{{post.torrent.url}}">Скачать {{post.hard_disk}}</a>
                       {% elif post not in userprofile.list_of_purchased_games.all %}
                         <a class='article__button btn btn-outline-warning' href="{% url 'main:add-to-cart' post.id %}">Купить: {{post.price}}руб</a>
                       {% endif %}
@@ -126,13 +126,13 @@
             {% endif %}
             <p class="article__content">{{post.title_description}}</p>
             {% if post.price < 1 %}
-              <a class="article__button btn btn-outline-warning" href="{{post.torrent.url}}">Скачать</a>
+              <a class="article__button btn btn-outline-warning" href="{{post.torrent.url}}">Скачать {{post.hard_disk}}</a>
               {% else %}
 
               {% if user.is_authenticated %}
 
                   {% if post in userprofile.list_of_purchased_games.all %}
-                    <a class='article__button btn btn-outline-warning' href="{{post.torrent.url}}">Скачать</a>
+                    <a class='article__button btn btn-outline-warning' href="{{post.torrent.url}}">Скачать {{post.hard_disk}}</a>
                   {% elif post not in userprofile.list_of_purchased_games.all %}
                     <a class='article__button btn btn-outline-warning' href="{% url 'main:add-to-cart' post.id %}">Купить: {{post.price}}руб</a>
                   {% endif %}

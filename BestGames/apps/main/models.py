@@ -15,10 +15,10 @@ from django.contrib.auth.models import User
 
 class Design(models.Model):
 
-
-	icon = models.ImageField('Иконка сайта', upload_to='design/icon/')
-	background = models.ImageField('Фон сайта', upload_to='design/theme/')
-	logotype = models.ImageField('Логотип сайта', upload_to='design/logotype/')
+	id = models.AutoField(primary_key=True)
+	icon = models.ImageField('Иконка сайта', upload_to='design/icon/', null=True, default='g')
+	background = models.ImageField('Фон сайта', upload_to='design/theme/', null=True, default='g')
+	logotype = models.ImageField('Логотип сайта', upload_to='design/logotype/', null=True, default='g')
 
 	def __str__(self):
 		return str(self.id)

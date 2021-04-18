@@ -206,7 +206,7 @@ class GameView(View):
 		elif f"{request}".find("<WSGIRequest: GET '/name/'>")+1:
 			games = Game.objects.order_by('-title')
 		elif f"{request}".find("<WSGIRequest: GET '/price/'>")+1:
-			games = Game.objects.order_by('-price')
+			games = Game.objects.order_by('price')
 		elif f"{request}".find("<WSGIRequest: GET '/hard_disk/'>")+1:
 			games = Game.objects.order_by('-hard_disk')
 		elif f"{request}".find("<WSGIRequest: GET '/language_russian/'>")+1:
@@ -216,7 +216,7 @@ class GameView(View):
 		else:
 			pass
 
-		paginator = Paginator(games, 12)
+		paginator = Paginator(games, 10)
 
 		page = request.GET.get('page')
 
@@ -249,7 +249,7 @@ class NewsGamesView(View):
 
 		games_news = [i for i in Game.objects.order_by('-id') if i.new_game_pub() == True]
 
-		paginator = Paginator(games_news, 12)
+		paginator = Paginator(games_news, 10)
 
 		page = request.GET.get('page')
 
