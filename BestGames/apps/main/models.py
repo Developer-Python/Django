@@ -17,7 +17,7 @@ class Design(models.Model):
 
 
 	icon = models.ImageField('Иконка сайта', upload_to='design/icon/')
-	background = models.ImageField('Фон сайта', upload_to='design/themes/')
+	background = models.ImageField('Фон сайта', upload_to='design/theme/')
 	logotype = models.ImageField('Логотип сайта', upload_to='design/logotype/')
 
 	def __str__(self):
@@ -67,12 +67,12 @@ class Game(models.Model):
 	hard_disk = models.CharField('Жёсткий диск', max_length=50)
 	data = models.IntegerField('Дата выхода игры', default=0)
 	category = models.ManyToManyField(Category, verbose_name='Категорий')
-	image_1 = models.ImageField('1) Изображение из игры', upload_to=f'games/{str(timezone.now())[:10]}')
-	image_2 = models.ImageField('2) Изображение из игры', upload_to=f'games/{str(timezone.now())[:10]}')
-	image_3 = models.ImageField('3) Изображение из игры', upload_to=f'games/{str(timezone.now())[:10]}')
-	image_4 = models.ImageField('4) Изображение из игры', upload_to=f'games/{str(timezone.now())[:10]}')
-	image_wrapper = models.ImageField('Обложка', upload_to='games/')
-	torrent = models.FileField('Torrent файл', upload_to='torrents/')
+	image_1 = models.ImageField('1) Изображение из игры', upload_to=f'game/{str(timezone.now())[:10]}')
+	image_2 = models.ImageField('2) Изображение из игры', upload_to=f'game/{str(timezone.now())[:10]}')
+	image_3 = models.ImageField('3) Изображение из игры', upload_to=f'game/{str(timezone.now())[:10]}')
+	image_4 = models.ImageField('4) Изображение из игры', upload_to=f'game/{str(timezone.now())[:10]}')
+	image_wrapper = models.ImageField('Обложка', upload_to='game/')
+	torrent = models.FileField('Torrent файл', upload_to='torrent/')
 	like = models.IntegerField('Нравиться', default='0')
 	dislike = models.IntegerField('Не нравиться', default='0')
 	views = models.IntegerField('Просмотры', default='0')
@@ -101,7 +101,7 @@ class Customer(models.Model):
 	user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE, related_name='related_user')
 	phone = models.CharField(verbose_name='Номер телефона', null=True, max_length=11)
 	address = models.CharField(verbose_name='Адрес', null=True, max_length=80)
-	image = models.ImageField(verbose_name='Аватарка', upload_to='users/')
+	image = models.ImageField(verbose_name='Аватарка', upload_to='user/avatar/')
 	list_of_purchased_games = models.ManyToManyField(Game, verbose_name='Список приобретённых игр', blank=True, related_name='related_list_of_purchased_games')
 
 	def __str__(self):
@@ -162,7 +162,7 @@ class Comment(models.Model):
 
 	games = models.ForeignKey(Game, on_delete=models.CASCADE)
 	author_name = models.CharField('Имя автора', max_length=25)
-	author_image = models.ImageField(verbose_name='Аватарка', blank=True, upload_to='users/')
+	author_image = models.ImageField(verbose_name='Аватарка', blank=True, upload_to='user/avatar/')
 	account_level = models.IntegerField('Уровень аккаунта', default='0')
 	comment_text = models.CharField('Коментарий', max_length=100)
 	comment_time = models.DateTimeField('дата коментария', auto_now=True)
@@ -186,4 +186,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 	'''========================================='''
 
 	if created:
-		Customer.objects.create(user=instance, image='/media/users/1.jpg')
+		Customer.objects.create(user=instance, image='/media/user/avatar/1.jpg')
