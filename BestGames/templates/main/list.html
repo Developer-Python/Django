@@ -14,11 +14,11 @@
 
 
 
-<main class="main">
+<main class="main" style="background: url(/media/{{design.background}}) no-repeat; height:100vh; background-attachment: fixed; background-position: center;">
 
   <section class="content">
     <div class="info__wrapper">
-        <h2>>>> Главная</h2>
+        <h2>>>> Главная </h2>
     </div>
   </section>
 
@@ -36,15 +36,15 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-sort" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:date' %}"><a href="/date/"><button class="btn btn-outline-success btn-sort" type="button" name="date">Дате</button></a></form></a>
-              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:pro' %}"><a href="/pro/"><button class="btn btn-outline-success btn-sort" type="button" name="pro">Популярности</button></a></form></a>
-              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:like' %}"><a href="/like/"><button class="btn btn-outline-success btn-sort" type="button" name="like">Положительным комментариям</button></a></form></a>
-              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:views' %}"><a href="/views/"><button class="btn btn-outline-success btn-sort" type="button" name="views">Просмотрам</button></a></form></a>
-              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:name' %}"><a href="/name/"><button class="btn btn-outline-success btn-sort" type="button" name="name">Имени[A-Z]</button></a></form></a>
-              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:price' %}"><a href="/price/"><button class="btn btn-outline-success btn-sort" type="button" name="price">Цене</button></a></form></a>
-              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:hard_disk' %}"><a href="/hard_disk/"><button class="btn btn-outline-success btn-sort" type="button" name="size">Размеру игры</button></a></form></a>
-              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:language_russian' %}"><a href="/language_russian/"><button class="btn btn-outline-success btn-sort" type="button" name="language_russian">Русскому языку</button></a></form></a>
-              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:language_english' %}"><a href="/language_english/"><button class="btn btn-outline-success btn-sort" type="button" name="language_english">Английскому языку</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:date' %}"><a href="/date/"><button class="btn btn-outline-success btn-sort" type="button" name="date"><i class="fa fa-calendar" aria-hidden="true"></i> Дате</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:pro' %}"><a href="/pro/"><button class="btn btn-outline-success btn-sort" type="button" name="pro"><i class="fa fa-star" aria-hidden="true"></i> Популярности</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:like' %}"><a href="/like/"><button class="btn btn-outline-success btn-sort" type="button" name="like"><i class="fa fa-heart" aria-hidden="true"></i> Положительным комментариям</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:views' %}"><a href="/views/"><button class="btn btn-outline-success btn-sort" type="button" name="views"><i class="fa fa-eye" aria-hidden="true"></i> Просмотрам</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:name' %}"><a href="/name/"><button class="btn btn-outline-success btn-sort" type="button" name="name"><i class="fa fa-tags" aria-hidden="true"></i> Имени[A-Z]</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:price' %}"><a href="/price/"><button class="btn btn-outline-success btn-sort" type="button" name="price"><i class="fa fa-usd" aria-hidden="true"></i> Цене</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:hard_disk' %}"><a href="/hard_disk/"><button class="btn btn-outline-success btn-sort" type="button" name="size"><i class="fa fa-database" aria-hidden="true"></i> Размеру игры</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:language_russian' %}"><a href="/language_russian/"><button class="btn btn-outline-success btn-sort" type="button" name="language_russian"><i class="fa fa-globe" aria-hidden="true"></i> Русскому языку</button></a></form></a>
+              <a class="dropdown-item dropdown-item-sort"><form action="{% url 'main:language_english' %}"><a href="/language_english/"><button class="btn btn-outline-success btn-sort" type="button" name="language_english"><i class="fa fa-globe" aria-hidden="true"></i> Английскому языку</button></a></form></a>
             </div>
           </div>
       </div>

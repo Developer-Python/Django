@@ -8,10 +8,10 @@
 <div class="nav__bar">
   <a href="#" class="nav__trigger">
       <div class="bars"></div>
-  </a>        
+  </a>
 </div>
 
-<div style="height:100vh;" class="main">
+<div style="background: url(/media/{{design.background}}) no-repeat; height:100vh; background-attachment: fixed; background-position: center;" class="main">
   <section style='max-width: 560px;' class="content">
     <article class="article">
 
@@ -28,7 +28,7 @@
         <br>
         <button class='btn btn-login btn-outline-success' type="submit">Войти</button>
 
-        
+
 
           {% if form.errors %}
           <div class="error">
@@ -47,7 +47,7 @@
           {% endif %}
 
       </div>
-      
+
     </form>
 
     </article>

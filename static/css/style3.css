@@ -1267,7 +1267,6 @@ h6 {
   width: calc(100% - 60px);
   height: 100vh;
   margin-left: 60px;
-  background: url(/static/main_theme_page.jpg) no-repeat;
   background-attachment: fixed;
   background-position: center;
   -webkit-transition: 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1672,13 +1671,12 @@ pro
 }
 
 .dropdown-sort {
-    margin-bottom: 120px;
-
+    margin-bottom: 150px;
 }
 
 .dropdown-menu-sort {
     width: 680px;
-    height: 120px;
+    height: 165px;
     opacity: 0.9;
     background: rgb(48 121 11 / 13%);
     margin-top: 3px;

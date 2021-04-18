@@ -9,39 +9,39 @@
 <div class="nav__bar">
     <a href="#" class="nav__trigger">
         <div class="bars"></div>
-    </a>        
+    </a>
   </div>
-  
-  <div style="height:100vh;" class="main container-fluid">
-        
-        <h1 class="cart__h1"> 
+
+  <div style="background: url(/media/{{design.background}}) no-repeat; height:100vh; background-attachment: fixed; background-position: center;" class="main container-fluid">
+
+        <h1 class="cart__h1">
             {% if cart.products.count != 0 %}
-                Ваша корзина | Общая цена: {{cart.final_price}} руб. | Кол-во: {{count_products_cart}} шт. 
+                Ваша корзина | Общая цена: {{cart.final_price}} руб. | Кол-во: {{count_products_cart}} шт.
             {% else %}
                 В вашей корзине нету заказов
             {% endif %}
         </h1>
 
         <div class="row">
-        
+
         {% for item in cart.products.all %}
 
             <div class="col-md-3">
                 <div class="card card__cart">
                     <div class="card-title card__title text-center">
-                        <p>{{item.product.title}}</p>     
+                        <p>{{item.product.title}}</p>
                     </div>
                     <div class="card-body">
-                        
+
                         <img height="330" width="260" src="{{item.product.image_wrapper.url}}" alt="Изображение">
-                        
+
                         <br><br>
 
                         <p class="card__text_p">Цена: <span class="text-2">{{item.final_price}} руб.</span></p>
                         <p class="card__text_p">Кол-во: <span class="text-2">{{item.qty}} шт.</span></p>
-                        
+
                         <hr class="card__hr">
-                        
+
 
                         <br>
                         <a href="http://127.0.0.1:8000/box_office/{{request.user.id}}">
@@ -50,11 +50,11 @@
                         <a href="{% url 'main:remove_to_cart' item.id %}">
                             <button class="btn btn-warning card__btn_warning" id='button-remove-product'><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </a>
-                        
+
                     </div>
-                </div>   
-            </div>     
-        
+                </div>
+            </div>
+
         {% endfor %}
         </div>
 </div>

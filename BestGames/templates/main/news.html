@@ -14,7 +14,7 @@
 
 
 
-<main class="main">
+<main style="background: url(/media/{{design.background}}) no-repeat; height:100vh; background-attachment: fixed; background-position: center;" class="main">
 
     <section class="content">
         <div class="info__wrapper">
@@ -109,7 +109,7 @@
                   {% elif post not in userprofile.list_of_purchased_games.all %}
                     <a class='article__button btn btn-outline-warning' href="{% url 'main:add-to-cart' post.id %}">Купить: {{post.price}}руб</a>
                   {% endif %}
-
+                {% endif %}
             {% endif %}
             <a class='article__button btn btn-outline-danger' href="{% url 'main:detail' post.id %}">Подробнее...</a>
 

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
- 
+
 {% block content %}
 
 {% include "header.html" %}
@@ -7,22 +7,22 @@
 <div class="nav__bar">
   <a href="#" class="nav__trigger">
       <div class="bars"></div>
-  </a>        
+  </a>
 </div>
 
-<div style="height:100vh;" class="main">
+<div style="background: url(/media/{{design.background}}) no-repeat; height:100vh; background-attachment: fixed; background-position: center;" class="main">
   <section style='max-width: 560px;' class="content">
     <article class="article">
       <div class="container-fluid">
-        <form method="post"> 
+        <form method="post">
         {% csrf_token %}
 
           <div class='login-wrapper'>
             <label class='login-label'>Имя пользователя:</label>
             <input class='input-login' name="username" required='' minlength="3" maxlength="40">
-            <label class='login-label'>Пароль:</label> 
+            <label class='login-label'>Пароль:</label>
             <input class='input-login' type="password" name="password1" required='' minlength="5" maxlength="32">
-            <label class='login-label'>Подтверждение пароля:</label> 
+            <label class='login-label'>Подтверждение пароля:</label>
             <input class='input-login' type="password" name="password2" required='' minlength="5" maxlength="32">
             <br>
             <button class='btn btn-login btn-outline-success' type="submit">Зарегистрироваться</button>
@@ -38,7 +38,7 @@
             </div>
             {% endif %}
           </div>
-          
+
         </form>
       </div>
     </article>

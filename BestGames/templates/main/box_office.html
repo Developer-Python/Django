@@ -9,10 +9,10 @@
 <div class="nav__bar">
     <a href="#" class="nav__trigger">
         <div class="bars"></div>
-    </a>        
+    </a>
   </div>
-  
-    <div style="height:100vh;" class="main container-fluid">
+
+    <div style="background: url(/media/{{design.background}}) no-repeat; height:100vh; background-attachment: fixed; background-position: center;" class="main container-fluid">
 
         {% if error %}
             <div class="error-pay">
@@ -30,27 +30,27 @@
 
             <div class="row">
                     {% for item in cart.products.all %}
-    
+
                     <div class="col-md-3">
                         <div class="card card__cart">
                             <div class="card-title card__title text-center">
-                                <p>{{item.product.title}}</p>     
+                                <p>{{item.product.title}}</p>
                             </div>
                             <div class="card-body">
-                                
+
                                 <img height="330" width="260" src="{{item.product.image_wrapper.url}}" alt="Изображение">
-                                
+
                                 <br><br>
-    
+
                                 <p class="card__text_p">Цена: <span class="text-2">{{item.final_price}} руб.</span></p>
-                                <p class="card__text_p">Кол-во: <span class="text-2">{{item.qty}} шт.</span></p> 
-    
+                                <p class="card__text_p">Кол-во: <span class="text-2">{{item.qty}} шт.</span></p>
+
                                 <br>
-                                
+
                             </div>
-                        </div>   
-                    </div>     
-                
+                        </div>
+                    </div>
+
                 {% endfor %}
             </div>
             <br><br>
@@ -61,22 +61,22 @@
                     <div class="panel-heading display-table" >
                         <div class="row display-tr" >
                             <img width="400" height="34" src="https://static.qiwi.com/img/qiwi_com/header/qiwi-wallet-logo.svg" alt="">
-                        </div>                    
+                        </div>
                     </div>
                     <div class="panel-body">
-    
+
                         <form action="{% url 'main:pay_online' user.id %}" method="POST">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-xs-12">
-                                    
+
                                     <div class="form-group">
                                         <label for="cardNumber">API</label>
                                         <div class="input-group">
                                             <input maxlength="75" type="text" class="form-control" name="api" placeholder="Ваш api ключ" autocomplete="cc-number" required autofocus />
                                             <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                         </div>
-                                    </div>                            
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -101,11 +101,11 @@
                                 </div>
                             </div>
                         </form>
-    
+
                     </div>
                 </div>
-            </div>  
-            
+            </div>
+
         </div>
         {% endif %}
 
