@@ -1,6 +1,6 @@
 # Website-Django
 
-Список установленных пакетов(плагинов) без которых проект на Djangp 3.0 работать не будет:
+Список установленных пакетов(плагинов) без которых проект на Django 3.0 работать не будет:
 
 1) Django 3.0        | pip3 install django3.0
 2) grappelli         | pip3 install django-grappelli
