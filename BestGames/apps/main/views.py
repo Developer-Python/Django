@@ -120,8 +120,35 @@ def userprofile_set_info(request, user_id, *args):
 		userprofile.address = request.POST.get('address')
 		userprofile.save()
 
-	if request.POST.get('image') != '':
-		userprofile.image = request.POST.get('image', 'user/main_theme_page.jpg')
+	if request.POST.get('r') == 'user/avatar/1.jpg':
+		userprofile.image = 'user/avatar/1.jpg'
+		userprofile.save()
+	elif request.POST.get('r') == 'user/avatar/2.jpg':
+		userprofile.image = 'user/avatar/2.jpg'
+		userprofile.save()
+	elif request.POST.get('r') == 'user/avatar/3.jpg':
+		userprofile.image = 'user/avatar/3.jpg'
+		userprofile.save()
+	elif request.POST.get('r') == 'user/avatar/4.jpg':
+		userprofile.image = 'user/avatar/4.jpg'
+		userprofile.save()
+	elif request.POST.get('r') == 'user/avatar/5.jpg':
+		userprofile.image = 'user/avatar/5.jpg'
+		userprofile.save()
+	elif request.POST.get('r') == 'user/avatar/6.jpg':
+		userprofile.image = 'user/avatar/6.jpg'
+		userprofile.save()
+	elif request.POST.get('r') == 'user/avatar/7.jpg':
+		userprofile.image = 'user/avatar/7.jpg'
+		userprofile.save()
+	elif request.POST.get('r') == 'user/avatar/8.jpg':
+		userprofile.image = 'user/avatar/8.jpg'
+		userprofile.save()
+	elif request.POST.get('r') == 'user/avatar/9.jpg':
+		userprofile.image = 'user/avatar/9.jpg'
+		userprofile.save()
+	else:
+		userprofile.image = 'user/avatar/10.jpg'
 		userprofile.save()
 
 	if request.POST.get('password_old') != '' and check_password(request.POST.get('password_old'), user.password):

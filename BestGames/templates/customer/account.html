@@ -20,17 +20,107 @@
   <div class="container">
       <div class="col-md-5">
         <div class="profile__div">
-           <img class="profile__img" src="{{userprofile.image.url}}" alt="">
+            <hr style='background: silver'>
+
+
+
+
+
+            <div class="">
+                <img class="profile__img" src="{{userprofile.image.url}}" alt="">
+                    <a href="#">
+                    </a>
+                  <button class="dropdown_img_btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class=" fa fa-chevron-circle-down" aria-hidden="true"></i></button>
+
+                  <div class="dropdown-menu dropdown-menu-image-profile" aria-labelledby="dropdownMenuButton">
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/1.jpg" checked>
+                          <span>Аватарка #1</span>
+                      </label>
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/2.jpg">
+                          <span>Аватарка #2</span>
+                      </label>
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/3.jpg">
+                          <span>Аватарка #3</span>
+                      </label>
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/4.jpg">
+                          <span>Аватарка #4</span>
+                      </label>
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/5.jpg">
+                          <span>Аватарка #5</span>
+                      </label>
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/6.jpg">
+                          <span>Аватарка #6</span>
+                      </label>
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/7.jpg">
+                          <span>Аватарка #7</span>
+                      </label>
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/8.jpg">
+                          <span>Аватарка #8</span>
+                      </label>
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/9.jpg">
+                          <span>Аватарка #9</span>
+                      </label>
+                      <label class="radio">
+                          <input name="r" type="radio" value="user/avatar/10.jpg">
+                          <span>Аватарка #10</span>
+                      </label>
+                  </div>
+            </div>
+
+
+
+
+
           <p class="profile__p">Профиль: <span class="profile__span">{{userprofile.user.username}}</span></p>
-          <p class="profile__p">Почта: <span class="profile__span">{{user.email}}</span></p>
+
+          <p class="profile__p">Cтатус:
+              <span class="profile__span">
+                  {% if user.is_superuser %}
+      				<i class="fa fa-check-circle" aria-hidden="true"></i>
+                    Создатель
+          		  {% elif user.is_staff %}
+          			<i class="fa fa-check" aria-hidden="true"></i>
+                    Персонал
+          		  {% else %}
+                    Обычный
+          		  {% endif %}
+              </span>
+          </p>
+
+          <p class="profile__p">Почта:
+              {% if user.email %}
+                  <span class="profile__span">{{user.email}}</span>
+              {% else %}
+                   <span class="profile__span">не указанно</span>
+              {% endif %}
+          </p>
+
           <p class="profile__p">Номер телефона: <span class="profile__span">{{userprofile.phone}}</span></p>
           <p class="profile__p">Адрес: <span class="profile__span">{{userprofile.address}}</span></p>
-          <p class="profile__p">Купленные игры:
-            {% for i in userprofile.list_of_purchased_games.all %}
-                <span class="profile__span">{{i}},</span>
-            {% endfor %}
-        </div>
+          <br>
+          <hr style='background: silver'>
 
+          <p class="profile__p">Купленные игры:
+            {% if userprofile.list_of_purchased_games.all %}
+                {% for i in userprofile.list_of_purchased_games.all %}
+                    <span class="profile__span">{{i}},</span>
+                {% endfor %}
+            {% else %}
+                <span class="profile__span">не приобретено</span>
+            {% endif %}
+         </p>
+
+        </div>
+        <hr style='background: silver'>
 
           <input name="email" placeholder='Изменить почту...'>
           <input name="phone" placeholder='Изменить номер телефона...'>
