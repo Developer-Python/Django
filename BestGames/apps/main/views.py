@@ -231,11 +231,11 @@ class GameView(View):
 		elif f"{request}".find("<WSGIRequest: GET '/views/'>")+1:
 			games = Game.objects.order_by('-views')
 		elif f"{request}".find("<WSGIRequest: GET '/name/'>")+1:
-			games = Game.objects.order_by('-title')
+			games = Game.objects.order_by('title')
 		elif f"{request}".find("<WSGIRequest: GET '/price/'>")+1:
 			games = Game.objects.order_by('price')
 		elif f"{request}".find("<WSGIRequest: GET '/hard_disk/'>")+1:
-			games = Game.objects.order_by('-hard_disk')
+			games = Game.objects.order_by('hard_disk')
 		elif f"{request}".find("<WSGIRequest: GET '/language_russian/'>")+1:
 			games = Game.objects.order_by('-language_text')
 		elif f"{request}".find("<WSGIRequest: GET '/language_english/'>")+1:

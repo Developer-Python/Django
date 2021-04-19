@@ -186,4 +186,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 	'''========================================='''
 
 	if created:
-		Customer.objects.create(user=instance, image='/user/avatar/1.jpg', phone='Не указан!', address='Не указан!')
+		Customer.objects.create(user=instance, image='/user/avatar/1.jpg', phone='не указанно', address='не указанно')
