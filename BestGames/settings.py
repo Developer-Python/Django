@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 DEBUG = True
 
 # Защита подписанных данных
-SECRET_KEY = 'd*ztfilbtuw5jr934&(xcj-%%!7&lk2ju%3!3pp!cno+n1ftef'
+SECRET_KEY = ''
 
 # Разрешённые хосты для которых может работать текущий сайт
 ALLOWED_HOSTS = ['*']
